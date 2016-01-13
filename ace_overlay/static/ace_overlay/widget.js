@@ -32,7 +32,8 @@
         var editor = ace.edit(widget);
         editor.setTheme("ace/theme/"+theme);
         editor.getSession().setMode("ace/mode/"+mode);
-        editor.getSession().setUseWrapMode(true);
+        editor.getSession().setUseWrapMode(wordwrap);
+        editor.setShowPrintMargin(printmargin);
         editor.setOptions({
             readOnly: false,
             highlightActiveLine: false,
