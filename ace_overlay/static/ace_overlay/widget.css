@@ -1,0 +1,116 @@
+.ace-overlay{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+
+    position: relative;
+    min-height: 30px;
+
+    background:#fff;
+    border:1px dotted #ccc;
+    padding:1em;
+    
+}
+.ace-overlay pre{
+    color:#666;
+    overflow: hidden;
+}
+.ace-overlay .input-container textarea{
+    display: none;
+}
+.ace-overlay  a.edit{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+
+    position: absolute;
+    top: 0;
+    left:0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    opacity:0;
+
+    font-size: 16px;
+    text-transform: uppercase;
+    color: #fff;
+    text-align: right;
+
+    padding-right:0.5em;
+    padding-top:0.5em;
+
+
+    background: rgba(0,0,0,0.5);
+    transition: all 0.25s ease;
+}
+.ace-overlay a.edit:hover{
+    opacity:1;
+    
+    
+}
+
+.ace-overlay .overlay-container{
+    position:fixed;
+    z-index: 10;
+    top:0;
+    left:0;
+    width:100%;
+    height: 100%;
+    
+
+    display: none;
+}
+.ace-overlay .overlay-container.open{
+    display: block;
+}
+.ace-overlay .backdrop{
+    display: block;
+    position: absolute;
+    z-index: -10;
+    width:100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+}
+.ace-overlay .overlay{
+    background:#ccc;
+    width:90%;
+    height:calc( 100% - 200px);
+    margin:auto;
+    margin-top:120px;
+    position: relative;
+
+}
+.ace-overlay .overlay,
+.ace-overlay .overlay * {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.ace-overlay .overlay .header{
+    background-color: #fff;
+    width:100%;
+    overflow: hidden;
+    padding:1em;
+    position: absolute;
+    top: -40px;
+}
+.ace-overlay .overlay .header .title{
+    float:left;
+    font-weight: bold;
+    font-size: 16px;
+}
+.ace-overlay .overlay .header .buttons{
+    float:right;
+}
+.ace-overlay .overlay .header .buttons a{
+    padding:0.25em 1em;
+    text-transform: uppercase;
+}
+.ace-overlay .overlay .editor-container{
+    width:100%;
+    height: 100%;
+}
+.ace-overlay .overlay .django-ace-widget{
+    width:100% !important;
+    height:100% !important;
+}

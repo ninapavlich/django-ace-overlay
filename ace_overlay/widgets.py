@@ -4,8 +4,9 @@ try:
     from django.forms.utils import flatatt
 except ImportError:
     from django.forms.util import flatatt
-from django.utils.safestring import mark_safe
 
+from django.utils.safestring import mark_safe
+from django.utils.html import escape
 
 class AceOverlayWidget(forms.Textarea):
     def __init__(self, mode=None, theme=None, wordwrap=False, width="500px", height="300px", showprintmargin=True, *args, **kwargs):
@@ -15,20 +16,20 @@ class AceOverlayWidget(forms.Textarea):
         self.width = width
         self.height = height
         self.showprintmargin = showprintmargin
-        super(AceWidget, self).__init__(*args, **kwargs)
+        super(AceOverlayWidget, self).__init__(*args, **kwargs)
 
     @property
     def media(self):
         js = [
-            "django_ace/ace/ace.js",
-            "django_ace/widget.js",
+            "ace_overlay/ace/ace.js",
+            "ace_overlay/widget.js",
             ]
         if self.mode:
-            js.append("django_ace/ace/mode-%s.js" % self.mode)
+            js.append("ace_overlay/ace/mode-%s.js" % self.mode)
         if self.theme:
-            js.append("django_ace/ace/theme-%s.js" % self.theme)
+            js.append("ace_overlay/ace/theme-%s.js" % self.theme)
         css = {
-            "screen": ["django_ace/widget.css"],
+            "screen": ["ace_overlay/widget.css"],
             }
         return forms.Media(js=js, css=css)
 
@@ -47,12 +48,33 @@ class AceOverlayWidget(forms.Textarea):
             ace_attrs["data-wordwrap"] = "true"
         ace_attrs["data-showprintmargin"] = "true" if self.showprintmargin else "false"
 
-        textarea = super(AceWidget, self).render(name, value, attrs)
+        textarea = super(AceOverlayWidget, self).render(name, value, attrs)
 
 
         html = '<div%s><div></div></div>%s' % (flatatt(ace_attrs), textarea)
 
+
         # add toolbar
-        html = '<div class="django-ace-editor"><div style="width: %s" class="django-ace-toolbar"><a href="./" class="django-ace-max_min"></a></div>%s</div>' % (self.width, html)
+        # html = '<div class="django-ace-editor"><div style="width: %s" class="django-ace-toolbar"><a href="./" class="django-ace-max_min"></a></div>%s</div>' % (self.width, html)
+
+        html = "<div class='ace-overlay'>\
+            <div class='readonly-container'>\
+                <div class='input-container'>%s</div>\
+                <pre><code>%s</code></pre>\
+                <a href='#' class='edit'>Edit</a>\
+            </div>\
+            <div class='overlay-container'>\
+                <a href='#' class='backdrop'></a>\
+                <div class='overlay'>\
+                    <div class='header'>\
+                        <div class='title'>Editing...</div>\
+                        <div class='buttons'><a href='#' class='cancel'>Cancel</a><a href='#' class='save'>Save</a></div>\
+                    </div>\
+                    <div class='editor-container'>\
+                        <div%s>%s</div>\
+                    </div>\
+                </div>\
+            </div>\
+        </div>"%(textarea, escape(value), flatatt(ace_attrs), textarea)
 
         return mark_safe(html)
