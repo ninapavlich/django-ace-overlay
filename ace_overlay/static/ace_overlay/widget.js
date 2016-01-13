@@ -38,6 +38,8 @@
             highlightActiveLine: false,
             highlightGutterLine: false
         })
+
+        $(widget).closest('.ace-overlay').data('editor', editor)
     }
 
     function init() {
@@ -49,6 +51,10 @@
     function addListeners(){
         $(".ace-overlay .edit").bind("click", function(event){
             event.preventDefault();
+
+            var value = $(this).closest('.ace-overlay').find('textarea').val();
+            $(this).closest('.ace-overlay').data('editor').setValue(value, -1);
+
             $('.ace-overlay').find('.overlay-container').removeClass('open');
             $(this).closest('.ace-overlay').find('.overlay-container').addClass('open');
         })
@@ -64,10 +70,10 @@
             event.preventDefault();
             $('.ace-overlay').find('.overlay-container').removeClass('open');
 
-            // var value = "test";//$(this).closest('.ace-overlay').find('.editor');
-            // $(this).closest('.ace-overlay').find('textarea').val(value);
-            // $(this).closest('.ace-overlay').find('textarea').html(value);
-            // $(this).closest('.ace-overlay').find('pre').html(value);
+            var value = $(this).closest('.ace-overlay').data('editor').getValue();
+            $(this).closest('.ace-overlay').find('textarea').val(value);
+            $(this).closest('.ace-overlay').find('textarea').html(value);
+            $(this).closest('.ace-overlay').find('pre').text(value);
         })
     }
 

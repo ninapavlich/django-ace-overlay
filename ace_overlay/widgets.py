@@ -60,7 +60,7 @@ class AceOverlayWidget(forms.Textarea):
         html = "<div class='ace-overlay'>\
             <div class='readonly-container'>\
                 <div class='input-container'>%s</div>\
-                <pre><code>%s</code></pre>\
+                <pre>%s</pre>\
                 <a href='#' class='edit'>Edit</a>\
             </div>\
             <div class='overlay-container'>\
@@ -68,13 +68,13 @@ class AceOverlayWidget(forms.Textarea):
                 <div class='overlay'>\
                     <div class='header'>\
                         <div class='title'>Editing...</div>\
-                        <div class='buttons'><a href='#' class='cancel'>Cancel</a><a href='#' class='save'>Save</a></div>\
+                        <div class='buttons'><a href='#' class='cancel'>Cancel</a><a href='#' class='save'>Save & Close</a></div>\
                     </div>\
                     <div class='editor-container'>\
-                        <div%s>%s</div>\
+                        <div%s></div>\
                     </div>\
                 </div>\
             </div>\
-        </div>"%(textarea, escape(value), flatatt(ace_attrs), textarea)
+        </div>"%(textarea, escape(value), flatatt(ace_attrs))
 
         return mark_safe(html)
