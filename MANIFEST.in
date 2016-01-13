@@ -1,11 +1,4 @@
 include README.md
 include LICENSE.txt
-include imagekit_cropper/static/imagekit_cropper/css/*.css
-include imagekit_cropper/static/imagekit_cropper/js/*.js
-include imagekit_cropper/static/imagekit_cropper/js/vendor/*.js
-include imagekit_cropper/static/imagekit_cropper/jcrop/css/*.css
-include imagekit_cropper/static/imagekit_cropper/jcrop/css/*.gif
-include imagekit_cropper/static/imagekit_cropper/jcrop/js/*.js
-include imagekit_cropper/management/*.py
-include imagekit_cropper/management/commands/*.py
-recursive-include imagekit_cropper/ *.py *.css *.js *.html
+recursive-include ace_overlay/static *
+recursive-include ace_overlay/ *.py *.css *.js *.html
