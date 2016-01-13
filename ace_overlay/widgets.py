@@ -61,10 +61,10 @@ class AceOverlayWidget(forms.Textarea):
             <div class='readonly-container'>\
                 <div class='input-container'>%s</div>\
                 <pre>%s</pre>\
-                <a href='#' class='edit'>Edit</a>\
+                <a href='#' class='edit'></a>\
             </div>\
             <div class='overlay-container'>\
-                <a href='#' class='backdrop'></a>\
+                <a href='#' class='backdrop' title='Cancel'></a>\
                 <div class='overlay'>\
                     <div class='header'>\
                         <div class='title'>Editing...</div>\

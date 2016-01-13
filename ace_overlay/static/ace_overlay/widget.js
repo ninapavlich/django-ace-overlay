@@ -62,11 +62,11 @@
             event.preventDefault();
             $('.ace-overlay').find('.overlay-container').removeClass('open');
         })
-        $(".ace-overlay .cancel").bind("click", function(event){
+        $(".ace-overlay .cancel, .ace-overlay .backdrop").bind("click", function(event){
             event.preventDefault();
             $('.ace-overlay').find('.overlay-container').removeClass('open');
         })
-        $(".ace-overlay .save, .ace-overlay .backdrop").bind("click", function(event){
+        $(".ace-overlay .save").bind("click", function(event){
             event.preventDefault();
             $('.ace-overlay').find('.overlay-container').removeClass('open');
 
