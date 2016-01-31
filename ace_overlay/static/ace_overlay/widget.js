@@ -27,7 +27,7 @@
         var printmargin = $(widget).attr("data-showprintmargin");
         var textarea = $(widget).closest('.ace-overlay').find('textarea');
 
-        console.log("mode: "+mode+" theme: "+theme+" wordwrap: "+wordwrap+" printmargin: "+printmargin+" textarea: "+textarea)
+        //console.log("mode: "+mode+" theme: "+theme+" wordwrap: "+wordwrap+" printmargin: "+printmargin+" textarea: "+textarea)
 
         var editor = ace.edit(widget);
         editor.setTheme("ace/theme/"+theme);
@@ -44,7 +44,6 @@
 
         //initialize code container display...
         var value = $(widget).closest('.ace-overlay').find('textarea').val();
-        console.log("value? "+value)
         renderAsCode($(widget).closest('.ace-overlay').find('.code-container'), value);
     }
 
@@ -58,10 +57,8 @@
     }
     function renderAsCode(container, text){
         
-        
         var enumerated_text = '';
         enumerated_source_list = text.split(/\r?\n/);//text.match(/[^\r\n]+/g);
-        console.log("found "+enumerated_source_list.length+" lines")
         var counter = 1
         for(var k=0; k<enumerated_source_list.length; k++){
             var line = enumerated_source_list[k];
