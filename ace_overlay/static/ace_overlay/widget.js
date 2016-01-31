@@ -40,7 +40,12 @@
             highlightGutterLine: false
         })
 
-        $(widget).closest('.ace-overlay').data('editor', editor)
+        $(widget).closest('.ace-overlay').data('editor', editor);
+
+        //initialize code container display...
+        var value = $(widget).closest('.ace-overlay').find('textarea').val();
+        console.log("value? "+value)
+        renderAsCode($(widget).closest('.ace-overlay').find('.code-container'), value);
     }
 
     function init() {
@@ -48,11 +53,28 @@
             init_widget(value);
         })
     }
-
+    function escape_tags(str) {
+        return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;') ;
+    }
+    function renderAsCode(container, text){
+        
+        
+        var enumerated_text = '';
+        enumerated_source_list = text.split(/\r?\n/);//text.match(/[^\r\n]+/g);
+        console.log("found "+enumerated_source_list.length+" lines")
+        var counter = 1
+        for(var k=0; k<enumerated_source_list.length; k++){
+            var line = enumerated_source_list[k];
+            var new_line = "<div class='line'><span class='counter'>"+counter+"</span><span class='code'>"+escape_tags(line)+"</span></div>";
+            enumerated_text += (new_line);
+            counter += 1;
+        }
+        $(container).html(enumerated_text);
+    }
     function addListeners(){
         $(".ace-overlay .edit").bind("click", function(event){
             event.preventDefault();
-
+            console.log("SET VALUE....")
             var value = $(this).closest('.ace-overlay').find('textarea').val();
             $(this).closest('.ace-overlay').data('editor').setValue(value, -1);
 
@@ -74,8 +96,19 @@
             var value = $(this).closest('.ace-overlay').data('editor').getValue();
             $(this).closest('.ace-overlay').find('textarea').val(value);
             $(this).closest('.ace-overlay').find('textarea').html(value);
-            $(this).closest('.ace-overlay').find('pre').text(value);
-        })
+            renderAsCode($(this).closest('.ace-overlay').find('.code-container'), value);
+        });
+
+        $(document).bind("keydown", function(event) {
+            var is_escape_key = event.keyCode == 27;
+            if (is_escape_key){                
+                var open_overlays = $('.ace-overlay').find('.overlay-container.open')
+                $(open_overlays).each(function(index, value){
+                    var save_button = $(value).closest('.ace-overlay').find(".save");
+                    $(save_button).trigger("click");
+                });
+            };
+        });
     }
 
     $( document ).ready(function() {
