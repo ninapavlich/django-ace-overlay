@@ -83,6 +83,24 @@
     height: 100%;
     display: none;
 }
+.ace-overlay .overlay-container.right{
+    width:50%;
+    left:50%;
+    border-left:1px solid #ccc;
+}
+.ace-overlay .overlay-container.left{
+    width:50%;
+    border-right:1px solid #ccc;
+}
+.ace-overlay .overlay-container.top{
+    height:50%;
+    border-bottom:1px solid #ccc;
+}
+.ace-overlay .overlay-container.bottom{
+    height:50%;
+    top:50%;
+    border-top:1px solid #ccc;
+}
 .ace-overlay .overlay-container.open{
     display: block;
 }
@@ -130,10 +148,53 @@
     float:right;
 }
 .ace-overlay .overlay .header .buttons a{
-    display: inline-block;
+    display: block;
+    float:left;
     font-weight: bold;
     padding: 0.5em 1em;
 }
+.ace-overlay .overlay .header .buttons a.align span{
+    border:1px solid #309bbf;
+    width: 16px;
+    height: 16px;
+    display: block;
+    position: relative;
+}
+.ace-overlay .overlay .header .buttons a.align span:before{
+    content:"\00a0\00a0";
+    width:100%;
+    height:100%;
+    background-color: #309bbf;
+    position: absolute;
+    top:0;
+    left:0;
+}
+.ace-overlay .overlay .header .buttons a.align.top span:before{
+    height:50%;
+}
+.ace-overlay .overlay .header .buttons a.align.bottom span:before{
+    height:50%;
+    top:50%;
+}
+.ace-overlay .overlay .header .buttons a.align.right span:before{
+    width:50%;
+    left:50%;
+}
+.ace-overlay .overlay .header .buttons a.align.left span:before{
+    width:50%;
+}
+
+.ace-overlay .overlay .header .buttons a.active{
+    background-color: #309bbf;
+    color:#fff;
+}
+.ace-overlay .overlay .header .buttons a.align.active span{
+    border-color:#fff;
+}
+.ace-overlay .overlay .header .buttons a.align.active span:before{
+    background-color:#fff;
+}
+
 .ace-overlay .overlay .header .buttons a.cancel{
     display: none;
 }

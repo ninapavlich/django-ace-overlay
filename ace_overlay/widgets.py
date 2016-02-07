@@ -21,7 +21,9 @@ class AceOverlayWidget(forms.Textarea):
     @property
     def media(self):
         js = [
+            "ace_overlay/emmet/emmet.js",
             "ace_overlay/ace/ace.js",
+            "ace_overlay/ace/ext-emmet.js",
             "ace_overlay/widget.js",
             ]
         if self.mode:
@@ -68,7 +70,10 @@ class AceOverlayWidget(forms.Textarea):
                 <div class='overlay'>\
                     <div class='header'>\
                         <div class='title'>Editing...</div>\
-                        <div class='buttons'><a href='#' class='cancel'>Cancel</a><a href='#' class='save'>Close</a></div>\
+                        <div class='buttons'>\
+                            <a href='#' class='align left' title='Align Left'><span></span></a><a href='#' class='align right' title='Align Right'><span></span></a><a href='#' class='align top' title='Align Top'><span></span></a><a href='#' class='align bottom' title='Align Bottom'><span></span></a>\
+                            <a href='#' class='cancel'>Cancel</a><a href='#' class='save'>Close</a>\
+                        </div>\
                     </div>\
                     <div class='editor-container'>\
                         <div%s></div>\
