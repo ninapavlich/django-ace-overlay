@@ -1,7 +1,11 @@
 (function() {
-    
-    $ = grp.jQuery;
 
+    // Try to use django-grapelli's jQuery, else fall back to the Django admin's one 
+    try{
+        $ = grp.jQuery;
+    }catch(err){
+        $ = django.jQuery;
+    }
     function next(elem) {
         // Credit to John Resig for this function
         // taken from Pro JavaScript techniques
