@@ -22,7 +22,7 @@ class AceOverlayWidget(forms.Textarea):
     def media(self):
         js = [
         	"ace_overlay/js_beautify/js_beautify.js",
-            "ace_overlay/emmet/emmet.js",
+            "ace_overlay/underscore/underscore.js",
             "ace_overlay/ace/ace.js",
             "ace_overlay/ace/ext-emmet.js",
             "ace_overlay/widget.js",
