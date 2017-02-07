@@ -21,6 +21,7 @@ class AceOverlayWidget(forms.Textarea):
     @property
     def media(self):
         js = [
+        	"ace_overlay/js_beautify/js_beautify.js",
             "ace_overlay/emmet/emmet.js",
             "ace_overlay/ace/ace.js",
             "ace_overlay/ace/ext-emmet.js",
@@ -52,13 +53,6 @@ class AceOverlayWidget(forms.Textarea):
 
         textarea = super(AceOverlayWidget, self).render(name, value, attrs)
 
-
-        html = '<div%s><div></div></div>%s' % (flatatt(ace_attrs), textarea)
-
-
-        # add toolbar
-        # html = '<div class="django-ace-editor"><div style="width: %s" class="django-ace-toolbar"><a href="./" class="django-ace-max_min"></a></div>%s</div>' % (self.width, html)
-
         html = "<div class='ace-overlay'>\
             <div class='readonly-container'>\
                 <div class='input-container'>%s</div>\
@@ -71,7 +65,11 @@ class AceOverlayWidget(forms.Textarea):
                     <div class='header'>\
                         <div class='title'>Editing...</div>\
                         <div class='buttons'>\
-                            <a href='#' class='align left' title='Align Left'><span></span></a><a href='#' class='align right' title='Align Right'><span></span></a><a href='#' class='align top' title='Align Top'><span></span></a><a href='#' class='align bottom' title='Align Bottom'><span></span></a>\
+                            <a href='#' class='beautify' title='Beautify'><span>Beautify<span></a>\
+                            <a href='#' class='align left' title='Align Left'><span></span></a>\
+                            <a href='#' class='align right' title='Align Right'><span></span></a>\
+                            <a href='#' class='align top' title='Align Top'><span></span></a>\
+                            <a href='#' class='align bottom' title='Align Bottom'><span></span></a>\
                             <a href='#' class='cancel'>Cancel</a><a href='#' class='save'>Close</a>\
                         </div>\
                     </div>\
@@ -80,6 +78,6 @@ class AceOverlayWidget(forms.Textarea):
                     </div>\
                 </div>\
             </div>\
-        </div>"%(textarea, escape(value), flatatt(ace_attrs))
+        </div>" % (textarea, escape(value), flatatt(ace_attrs))
 
         return mark_safe(html)
