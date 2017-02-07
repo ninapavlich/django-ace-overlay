@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name = 'django-ace-overlay',
-    version = '0.5',
+    version = '0.5.1.patch1',
     author = 'Nina Pavlich',
     author_email='nina@ninalp.com',
     url = 'https://github.com/ninapavlich/django-ace-overlay',
@@ -11,7 +11,6 @@ setup(
     keywords = ['libraries', 'web development', 'cms', 'django', 'code-editor', 'admin'],
     include_package_data = True,
     packages = ['ace_overlay'],
-    
     classifiers=[
         'Development Status :: 4 - Beta',
         'Environment :: Web Environment',
