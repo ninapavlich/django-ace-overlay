@@ -11,7 +11,6 @@ setup(
     keywords = ['libraries', 'web development', 'cms', 'django', 'code-editor', 'admin'],
     include_package_data = True,
     packages = ['ace_overlay'],
-    
     classifiers=[
         'Development Status :: 4 - Beta',
         'Environment :: Web Environment',
