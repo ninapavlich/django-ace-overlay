@@ -1,16 +1,16 @@
-from setuptools import setup, find_packages
+from setuptools import setup
 
 setup(
-    name = 'django-ace-overlay',
-    version = '0.6',
-    author = 'Nina Pavlich',
+    name='django-ace-overlay',
+    version='0.6',
+    author='Nina Pavlich',
     author_email='nina@ninalp.com',
-    url = 'https://github.com/ninapavlich/django-ace-overlay',
-    license = "MIT",
-    description = 'Ace editor for Django admin',
-    keywords = ['libraries', 'web development', 'cms', 'django', 'code-editor', 'admin'],
-    include_package_data = True,
-    packages = ['ace_overlay'],
+    url='https://github.com/ninapavlich/django-ace-overlay',
+    license="MIT",
+    description='Ace editor for Django admin',
+    keywords=['libraries', 'web development', 'cms', 'django', 'code-editor', 'admin'],
+    include_package_data=True,
+    packages=['ace_overlay'],
     classifiers=[
         'Development Status :: 4 - Beta',
         'Environment :: Web Environment',
