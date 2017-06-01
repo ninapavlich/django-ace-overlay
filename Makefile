@@ -28,7 +28,6 @@ help:
 
 clean: clean-build clean-pyc clean-test ## remove all build, test, coverage and Python artifacts
 
-
 clean-build: ## remove build artifacts
 	rm -fr build/
 	rm -fr dist/
@@ -48,37 +47,11 @@ clean-test: ## remove test and coverage artifacts
 	rm -fr htmlcov/
 
 lint: ## check style with flake8
-	flake8 gs1_fabfile tests
-
-test: ## run tests quickly with the default Python
-
-		python setup.py test
-
-test-all: ## run tests on every Python version with tox
-	tox
-
-coverage: ## check code coverage quickly with the default Python
-
-		coverage run --source gs1_fabfile setup.py test
-
-		coverage report -m
-		coverage html
-		$(BROWSER) htmlcov/index.html
-
-docs: ## generate Sphinx HTML documentation, including API docs
-	rm -f docs/gs1_fabfile.rst
-	rm -f docs/modules.rst
-	sphinx-apidoc -o docs/ gs1_fabfile
-	$(MAKE) -C docs clean
-	$(MAKE) -C docs html
-	$(BROWSER) docs/_build/html/index.html
-
-servedocs: docs ## compile the docs watching for changes
-	watchmedo shell-command -p '*.rst' -c '$(MAKE) -C docs html' -R -D .
+	flake8 ace_overlay
 
 release: clean ## package and upload a release
-	python setup.py sdist upload -r cheeseshop
-	python setup.py bdist_wheel upload -r cheeseshop
+	python setup.py sdist upload
+	python setup.py bdist_wheel upload
 
 dist: clean ## builds source and wheel package
 	python setup.py sdist
