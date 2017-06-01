@@ -1,12 +1,15 @@
+# -*- coding=utf-8 -*-
 from __future__ import unicode_literals
+
 from django import forms
+from django.utils.html import escape
+from django.utils.safestring import mark_safe
+
 try:
     from django.forms.utils import flatatt
 except ImportError:
     from django.forms.util import flatatt
 
-from django.utils.safestring import mark_safe
-from django.utils.html import escape
 
 class AceOverlayWidget(forms.Textarea):
     def __init__(self, mode=None, theme=None, wordwrap=False, width="500px", height="300px", showprintmargin=True, *args, **kwargs):
@@ -21,19 +24,19 @@ class AceOverlayWidget(forms.Textarea):
     @property
     def media(self):
         js = [
-        	"ace_overlay/js_beautify/js_beautify.js",
+            "ace_overlay/js_beautify/js_beautify.js",
             "ace_overlay/underscore/underscore.js",
             "ace_overlay/ace/ace.js",
             "ace_overlay/ace/ext-emmet.js",
             "ace_overlay/widget.js",
-            ]
+        ]
         if self.mode:
             js.append("ace_overlay/ace/mode-%s.js" % self.mode)
         if self.theme:
             js.append("ace_overlay/ace/theme-%s.js" % self.theme)
         css = {
             "screen": ["ace_overlay/widget.css"],
-            }
+        }
         return forms.Media(js=js, css=css)
 
     def render(self, name, value, attrs=None):
