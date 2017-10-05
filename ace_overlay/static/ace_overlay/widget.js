@@ -123,7 +123,7 @@
 
         $(".ace-overlay .beautify").bind("click", function (event) {
             event.preventDefault();
-            var overlay_container = $('.ace-overlay').find('.overlay-container');
+            var overlay_container = $(event.target).parents('.overlay-container');
             var editor = ace.edit($(overlay_container).find(".django-ace-widget")[0]);
             var text = editor.session.getValue();
             try {
