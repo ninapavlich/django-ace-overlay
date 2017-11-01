@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='django-ace-overlay',
-    version='0.6',
+    version='0.7',
     author='Nina Pavlich',
     author_email='nina@ninalp.com',
     url='https://github.com/ninapavlich/django-ace-overlay',
