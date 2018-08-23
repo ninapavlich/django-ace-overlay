@@ -39,7 +39,7 @@ class AceOverlayWidget(forms.Textarea):
         }
         return forms.Media(js=js, css=css)
 
-    def render(self, name, value, attrs=None):
+    def render(self, name, value, attrs=None, **kwargs):
         attrs = attrs or {}
 
         ace_attrs = {
