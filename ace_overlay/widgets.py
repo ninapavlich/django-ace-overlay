@@ -55,7 +55,7 @@ class AceOverlayWidget(forms.Textarea):
         ace_attrs["data-showprintmargin"] = "true" if self.showprintmargin else "false"
 
         textarea = super(AceOverlayWidget, self).render(name, value, attrs, **kwargs)
-®
+
         html = "<div class='ace-overlay'>\
             <div class='readonly-container'>\
                 <div class='input-container'>%s</div>\
