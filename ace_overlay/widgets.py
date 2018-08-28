@@ -39,7 +39,7 @@ class AceOverlayWidget(forms.Textarea):
         }
         return forms.Media(js=js, css=css)
 
-    def render(self, name, value, attrs=None):
+    def render(self, name, value, attrs=None, **kwargs):
         attrs = attrs or {}
 
         ace_attrs = {
@@ -54,7 +54,7 @@ class AceOverlayWidget(forms.Textarea):
             ace_attrs["data-wordwrap"] = "true"
         ace_attrs["data-showprintmargin"] = "true" if self.showprintmargin else "false"
 
-        textarea = super(AceOverlayWidget, self).render(name, value, attrs)
+        textarea = super(AceOverlayWidget, self).render(name, value, attrs, **kwargs)
 
         html = "<div class='ace-overlay'>\
             <div class='readonly-container'>\
